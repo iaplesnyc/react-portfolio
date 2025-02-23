@@ -3,8 +3,7 @@
 Welcome to my **React Portfolio!** 🚀 This project showcases my work as a **data analyst & web developer**, with experience in **React, JavaScript, SQL, and Python**. I am passionate about **AdTech, BI tools, and solving complex problems**.
 
 ## 🌐 Live Demo
-🔗 [View My Portfolio on Netlify](https://your-netlify-url.netlify.app)  
-*(Replace with your actual Netlify URL after deployment.)*
+🔗 [View My Portfolio on Netlify](https://ilianapena.netlify.app/)
 
 ---
 
