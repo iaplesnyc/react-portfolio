@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Contact.css';
 
 const Contact = () => {
@@ -18,12 +18,13 @@ const Contact = () => {
   };
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
 
-    // Live validation
+    // Only clear the error if the new input is actually valid
     setErrors((prevErrors) => ({
       ...prevErrors,
-      [e.target.name]: "",
+      [name]: value.trim() ? "" : prevErrors[name]
     }));
   };
 
@@ -31,7 +32,7 @@ const Contact = () => {
     e.preventDefault();
     if (validate()) {
       setSubmitted(true);
-      alert("Message sent successfully!");
+      setTimeout(() => setSubmitted(false), 3000); // Hide success message after 3 seconds
       setFormData({ name: '', email: '', message: '' });
     }
   };
@@ -39,8 +40,9 @@ const Contact = () => {
   return (
     <section className="contact">
       <h2>Contact Me</h2>
+
       {submitted && <p className="success-message">Your message has been sent successfully!</p>}
-      
+
       <form onSubmit={handleSubmit} noValidate>
         <div className="form-group">
           <label htmlFor="name">Name:</label>
@@ -85,6 +87,19 @@ const Contact = () => {
 
         <button type="submit" className="btn">Send</button>
       </form>
+
+      {/* 🔹 Add LinkedIn Contact Option */}
+      <div className="contact-links">
+        <p>Or connect with me on:</p>
+        <a 
+          href="https://www.linkedin.com/in/iliana-pena/" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="linkedin-link"
+        >
+          LinkedIn
+        </a>
+      </div>
     </section>
   );
 };
